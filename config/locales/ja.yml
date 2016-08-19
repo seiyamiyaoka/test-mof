@@ -1,0 +1,32 @@
+ja:
+  Buildings: 物件一覧
+  nearest_station: 最寄り駅
+  Name: 物件名
+  Rent: 賃料
+  Address: 住所
+  Building age: 築年数
+  Remarks: 備考
+  route_name: 路線名
+  station_name: 駅名
+  walk_time: 徒歩分数
+  yen: 円
+  year: 年
+  minute: 分
+  create building: 登録する
+  New Building: 物件登録
+  activerecord:
+    models:
+      building:
+      nearest_station:
+    attributes:
+      building:
+        name: 物件名
+        rent: 賃料
+        address: 住所
+        building_age: 築年数
+        remarks: 備考
+        nearest_station: 最寄り駅
+      nearest_station:
+        route_name: 路線名
+        station_name: 駅名
+        walk_time: 徒歩分数

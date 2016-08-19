@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong><%= t "Name" %>:</strong>
+  <%= @building.name %>
+</p>
+
+<p>
+  <strong><%= t "Rent" %>:</strong>
+  <%= @building.rent %>
+</p>
+
+<p>
+  <strong><%= t "Address" %>:</strong>
+  <%= @building.address %>
+</p>
+
+<p>
+  <strong><%= t "Building age" %>:</strong>
+  <%= @building.building_age %>
+</p>
+
+<p>
+  <strong><%= t "Remarks" %>:</strong>
+  <%= @building.remarks %>
+</p>
+
+<hr>
+
+<% @building.nearest_stations.each_with_index do |nearest_station, index| %>
+  <h3><%= t "nearest_station" %><%= "#{index + 1}"%></h3>
+  <p>
+    <strong><%= t "route_name" %></strong>
+    <%= nearest_station.route_name %>
+  </p>
+  <p>
+    <strong><%= t "station_name" %></strong>
+    <%= nearest_station.station_name %>
+  </p>
+  <p>
+    <strong><%= t "walk_time" %></strong>
+    <%= nearest_station.walk_time %>
+  </p>
+<% end %>
+
+<%= link_to '編集', edit_building_path(@building) %> |
+<%= link_to '戻る', buildings_path %>

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= t 'Buildings' %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= t "Name" %></th>
+      <th><%= t "Rent" %></th>
+      <th><%= t "Address" %></th>
+      <th><%= t "Building age" %></th>
+      <th><%= t "Remarks" %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @buildings.each do |building| %>
+      <tr>
+        <td><%= building.name %></td>
+        <td><%= building.rent %><%= t "yen" %></td>
+        <td><%= building.address %></td>
+        <td><%= building.building_age %><%= t "year" %></td>
+        <td><%= building.remarks %></td>
+        <td><%= link_to  '詳細', building %></td>
+        <td><%= link_to '編集', edit_building_path(building) %></td>
+        <td><%= link_to '削除', building, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '物件を登録する', new_building_path %>

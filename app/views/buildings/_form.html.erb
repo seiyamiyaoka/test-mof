@@ -1,0 +1,58 @@
+<%= form_for(building) do |f| %>
+  <% if building.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(building.errors.count, "error") %> prohibited this building from being saved:</h2>
+
+      <ul>
+      <% building.errors.full_messages.each do |message| %>
+        <li><%= t message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :rent %>
+    <%= f.number_field :rent %><%= t "yen" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= f.label :building_age %>
+    <%= f.number_field :building_age %><%= t "year" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :remarks %>
+    <%= f.text_area :remarks %>
+  </div>
+
+  <hr>
+
+<% if action_name == 'new' %>
+  <% NEAREST_STATIONS.times.each_with_index do |index|  %>
+    <%= f.fields_for :nearest_stations do |nearest_station| %>
+      <h3><%= t "nearest_station" %><%= "#{index + 1}"%></h3>
+      <%= render 'nearest_stations/form', f: nearest_station %>
+    <% end %>
+  <% end %>
+<% else %>
+  <%= f.fields_for :nearest_stations do |nearest_station| %>
+    <h3><%= t "nearest_station" %><%= nearest_station.index + 1 %></h3>
+    <%= render 'nearest_stations/form', f: nearest_station %>
+  <% end %>
+<% end %>
+
+<div class="actions">
+  <%= f.submit action_name == 'new' ? "登録する" :  "更新する" %>
+</div>
+<% end %>
